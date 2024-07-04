@@ -18,24 +18,26 @@ defineProps<{
 </script>
 
 <template>
-  <div class="event-class">
-    <div class="event-card">
-      <h2>{{ event.title }}</h2>
-      <span>@{{ event.time }} on {{ event.date }}</span>
+  <div class="name-class">
+    <div class="name-tag">
+      <h2>{{ event.category }}</h2>
+      <h2>{{ event.organizer }}</h2>
     </div>
   </div>
 </template>
 
 <style scoped>
-.event-card {
+.name-tag {
   padding: 20px;
   width: 250px;
   cursor: pointer;
   border: 1px solid #39495c;
   margin-bottom: 18px;
+  text-align: right;
+  border-radius: 10px;
 }
 
-.event-card:hover {
+.name-tag:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
 }

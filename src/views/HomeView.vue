@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import EventCard from '@/components/EventCard.vue'
+import NameTag from '@/components/NameTag.vue'
 import Event from '@/types/Event'
 import { ref } from 'vue'
 const events = ref<Event[]>([
   {
     id: 5928101,
-    category: 'animal welfare',
+    category: 'Animal Welfare',
     title: 'Cat Adoption Day',
     description: 'Find your new feline friend at this event.',
     location: 'Meow Town',
@@ -16,7 +17,7 @@ const events = ref<Event[]>([
   },
   {
     id: 4582797,
-    category: 'food',
+    category: 'Food',
     title: 'Community Gardening',
     description: 'Join us as we tend to the community edible plants.',
     location: 'Flora City',
@@ -27,7 +28,7 @@ const events = ref<Event[]>([
   },
   {
     id: 8419988,
-    category: 'sustainability',
+    category: 'Sustainability',
     title: 'Beach Cleanup',
     description: 'Help pick up trash along the shore.',
     location: 'Playa Del Carmen',
@@ -40,7 +41,18 @@ const events = ref<Event[]>([
 </script>
 
 <template>
-  <div class="home">
+  <div class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
+  <div class="events">
+    <NameTag v-for="event in events" :key="event.id" :event="event" />
+  </div>
 </template>
+
+<style scoped>
+.events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+</style>
