@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { ref } from 'vue'
+
+const pageSize = ref<number>(2); // Default page size
+
+const route = useRoute();
+
+function updatePageSize() {
+  const currentQuery = route.query;
+  currentQuery.size = pageSize.value.toString();
+  // Navigate to the same route with updated query parameters
+  $router.replace({ name: route.name as string, query: currentQuery });
+}
 </script>
 
 <template>
@@ -7,9 +19,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink :to="{ name: 'event-list-view', query: { page: 1, size: 2 } }"
-            >Event</RouterLink
-          >
+          <RouterLink :to="{ name: 'event-list-view', query: { page: 1, size: pageSize } }">Event</RouterLink>
           | <RouterLink :to="{ name: 'about' }">About</RouterLink> |
           <RouterLink :to="{ name: 'student-list-view' }">Students</RouterLink>
         </nav>
