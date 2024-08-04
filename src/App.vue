@@ -1,25 +1,36 @@
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { useMessageStore } from '@/stores/message'
+import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
-const pageSize = ref<number>(2); // Default page size
+const store = useMessageStore()
 
-const route = useRoute();
+const { message } = storeToRefs(store)
+
+const pageSize = ref<number>(2) // Default page size
+
+const route = useRoute()
 
 function updatePageSize() {
-  const currentQuery = route.query;
-  currentQuery.size = pageSize.value.toString();
+  const currentQuery = route.query
+  currentQuery.size = pageSize.value.toString()
   // Navigate to the same route with updated query parameters
-  $router.replace({ name: route.name as string, query: currentQuery });
+  $router.replace({ name: route.name as string, query: currentQuery })
 }
 </script>
 
 <template>
   <div id="layout">
     <header>
+      <div id="flashMessage" v-if="message">
+        <h4>{{ message }}</h4>
+      </div>
       <div class="wrapper">
         <nav>
-          <RouterLink :to="{ name: 'event-list-view', query: { page: 1, size: pageSize } }">Event</RouterLink>
+          <RouterLink :to="{ name: 'event-list-view', query: { page: 1, size: pageSize } }"
+            >Event</RouterLink
+          >
           | <RouterLink :to="{ name: 'about' }">About</RouterLink> |
           <RouterLink :to="{ name: 'student-list-view' }">Students</RouterLink>
         </nav>
@@ -54,5 +65,19 @@ nav a.router-link-exact-active {
 
 h2 {
   font-size: 20px;
+}
+
+@keyframes yellofade {
+  from {
+    background-color: yellow;
+  }
+
+  to {
+    background-color: transparent;
+  }
+}
+
+#flashMessage {
+  animation: yellofade 3s ease-in-out;
 }
 </style>
