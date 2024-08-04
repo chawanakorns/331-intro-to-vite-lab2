@@ -12,7 +12,8 @@ const route = useRoute()
 const router = useRouter()
 
 const page = ref<number>(parseInt(route.query.page?.toString() || '1'))
-const pageSize = ref<number>(parseInt(route.query.size?.toString() || '2'))
+// initial page size setting
+const pageSize = ref<number>(parseInt(route.query.size?.toString() || '3'))
 
 const hasNextPage = computed(() => {
   const totalPages = Math.ceil(totalEvents.value / pageSize.value)
@@ -21,7 +22,6 @@ const hasNextPage = computed(() => {
 
 onMounted(() => {
   watchEffect(() => {
-    events.value = null
     EventService.getEvents(pageSize.value, page.value)
       .then((response) => {
         events.value = response.data
@@ -36,7 +36,7 @@ onMounted(() => {
 
 watch(route, (newRoute) => {
   page.value = parseInt(newRoute.query.page?.toString() || '1')
-  pageSize.value = parseInt(newRoute.query.size?.toString() || '2')
+  pageSize.value = parseInt(newRoute.query.size?.toString() || '3')
 })
 
 function updatePageSize(newSize: number) {
