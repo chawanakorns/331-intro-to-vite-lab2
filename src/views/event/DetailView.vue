@@ -9,6 +9,8 @@ const props = defineProps<{
 const { event } = toRefs(props)
 </script>
 <template>
-  <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-  <p>{{ event.description }}</p>
+  <div class="flex flex-col m-4 gap-3">
+    <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
+    <p>{{ event.description }}</p>
+  </div>
 </template>

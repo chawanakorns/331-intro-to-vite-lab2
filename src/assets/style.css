@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/*App.vue*/
 h1 {
     @apply text-4xl mb-8
+}
+
+/*EventListView.vue*/
+.pagination {
+    @apply flex;
+    width: 290px;
+}
+
+.pagination a {
+    @apply flex-1 text-gray-700;
+}
+
+#page-prev {
+    @apply text-left;
+}
+
+#page-next {
+    @apply text-right;
 }

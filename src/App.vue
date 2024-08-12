@@ -10,14 +10,6 @@ const { message } = storeToRefs(store)
 
 const pageSize = ref<number>(2) // Default page size
 
-const route = useRoute()
-
-function updatePageSize() {
-  const currentQuery = route.query
-  currentQuery.size = pageSize.value.toString()
-  // Navigate to the same route with updated query parameters
-  $router.replace({ name: route.name as string, query: currentQuery })
-}
 </script>
 
 <template>
@@ -40,36 +32,3 @@ function updatePageSize() {
     <RouterView />
   </div>
 </template>
-
-<style>
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-@keyframes yellofade {
-  from {
-    background-color: yellow;
-  }
-
-  to {
-    background-color: transparent;
-  }
-}
-
-#flashMessage {
-  animation: yellofade 3s ease-in-out;
-}
-</style>
