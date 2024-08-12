@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { defineProps, withDefaults } from 'vue'
-const props = withDefaults(
-  defineProps<{
-    resource: String
-  }>(),
-  {
-    resource: 'page'
+import { defineProps } from 'vue'
+defineProps({
+  resource: {
+    type: String,
+    required: true,
+    default: 'page'
   }
-)
+})
 </script>
 <template>
   <h1>Oops!</h1>

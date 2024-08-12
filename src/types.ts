@@ -10,16 +10,6 @@ export interface Event {
   organizer: string
 }
 
-export interface Student {
-  id: number
-  studentId: string
-  name: string
-  surname: string
-  gpa: number
-  penAmount: number
-  description: string
-}
-
 export interface MessageState {
   message: string
 }

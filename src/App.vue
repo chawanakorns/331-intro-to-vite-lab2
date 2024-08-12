@@ -24,9 +24,7 @@ const pageSize = ref<number>(2) // Default page size
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
             :to="{ name: 'event-list-view', query: { page: 1, size: pageSize } }">Event</RouterLink>
           | <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'about' }">
-            About</RouterLink> |
-          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
-            :to="{ name: 'student-list-view' }">Students</RouterLink>
+            About</RouterLink>
         </nav>
       </div>
     </header>
