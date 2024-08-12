@@ -1,5 +1,3 @@
-import type { Url } from 'url'
-
 export interface Event {
   id: number
   category: string
@@ -18,7 +16,6 @@ export interface Student {
   name: string
   surname: string
   gpa: number
-  image: Url
   penAmount: number
   description: string
 }
